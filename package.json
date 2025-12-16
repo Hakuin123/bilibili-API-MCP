@@ -1,0 +1,29 @@
+{
+  "name": "bilibili-api-mcp",
+  "version": "1.0.0",
+  "description": "Bilibili API MCP Server",
+  "type": "module",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
+    "dev": "tsc --watch"
+  },
+  "keywords": [
+    "mcp",
+    "bilibili",
+    "api"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.1",
+    "axios": "^1.6.0",
+    "dotenv": "^16.4.5",
+    "protobufjs": "^7.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}
