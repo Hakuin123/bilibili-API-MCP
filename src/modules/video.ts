@@ -17,6 +17,13 @@ export async function getVideoStream(bvid: string, cid: number) {
     return get('https://api.bilibili.com/x/player/playurl', { bvid, cid, fnval: 16 });
 }
 
+export async function getVideoSubtitle(bvid: string, cid: number) {
+    // Get subtitle list from player info
+    const playerInfo = await get('https://api.bilibili.com/x/player/v2', { bvid, cid });
+    return playerInfo;
+}
+
+
 // Actions
 import { getCsrfToken } from '../utils/request.js';
 

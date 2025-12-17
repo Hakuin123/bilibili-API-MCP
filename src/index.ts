@@ -45,6 +45,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
             { name: 'like_video', description: 'Like or unlike a video', inputSchema: { type: 'object', properties: { bvid: { type: 'string' }, like: { type: 'boolean' } }, required: ['bvid'] } },
             { name: 'coin_video', description: 'Coin a video', inputSchema: { type: 'object', properties: { bvid: { type: 'string' }, multiply: { type: 'number' } }, required: ['bvid'] } },
             { name: 'share_video', description: 'Share a video', inputSchema: { type: 'object', properties: { bvid: { type: 'string' } }, required: ['bvid'] } },
+            { name: 'get_video_subtitle', description: 'Get video subtitle info', inputSchema: { type: 'object', properties: { bvid: { type: 'string' }, cid: { type: 'number' } }, required: ['bvid', 'cid'] } },
 
             // Episode
             { name: 'get_pgc_view', description: 'Get PGC (Anime/Movie) status/info', inputSchema: { type: 'object', properties: { ep_id: { type: 'number' } }, required: ['ep_id'] } },
@@ -95,6 +96,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
             case 'like_video': return { content: [{ type: 'text', text: JSON.stringify(await Video.likeVideo(_args.bvid, _args.like)) }] };
             case 'coin_video': return { content: [{ type: 'text', text: JSON.stringify(await Video.coinVideo(_args.bvid, _args.multiply)) }] };
             case 'share_video': return { content: [{ type: 'text', text: JSON.stringify(await Video.shareVideo(_args.bvid)) }] };
+            case 'get_video_subtitle': return { content: [{ type: 'text', text: JSON.stringify(await Video.getVideoSubtitle(_args.bvid, _args.cid)) }] };
 
             case 'get_pgc_view': return { content: [{ type: 'text', text: JSON.stringify(await Episode.getPgcView(_args.ep_id)) }] };
             case 'get_pgc_playurl': return { content: [{ type: 'text', text: JSON.stringify(await Episode.getPgcPlayUrl(_args.ep_id, _args.cid)) }] };
